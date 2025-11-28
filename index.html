@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Keerthana 🎉✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #89cff0;          /* plain baby sky blue */
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+        color: #CC4100;
+    }
+
+    /* Stars kept, but no background glow */
+    .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .star {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        0% {opacity: 0.3; transform: scale(1);}
+        100% {opacity: 1; transform: scale(1.2);}
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        position: relative;
+        z-index: 10;
+        text-align: center;
+    }
+
+    /* SIMPLE WHITE TITLE (no effects) */
+    .birthday-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3rem, 10vw, 6rem);
+        color: #ffffff;       /* pure white text */
+        margin-bottom: 20px;
+        letter-spacing: 3px;
+        text-align: center;
+    }
+
+    /* remove the emoji line under the title */
+    .birthday-title::after {
+        content: '';
+    }
+
+    /* Photo Frame */
+    .photo-container {
+        margin: 40px 0;
+        position: relative;
+    }
+
+    .photo-frame {
+        width: clamp(250px, 40vw, 320px);
+        height: clamp(250px, 40vw, 320px);
+        border-radius: 25px;
+        border: 8px solid #FF5B00;
+        box-shadow: 0 20px 40px rgba(255, 91, 0, 0.3);
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+        background: #ffffff;
+    }
+
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Birthday Message */
+    .wish-message {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        line-height: 1.6;
+        margin: 40px 20px;
+        font-weight: 400;
+        font-style: italic;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 35px;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        color: #CC4100;
+    }
+
+    .wish-message strong {
+        color: #FF5B00;
+        font-family: 'Cinzel', serif;
+    }
+
+    /* Stats */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin: 50px 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 30px 20px;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        position: relative;
+        overflow: hidden;
+        color: #CC4100;
+    }
+
+    .stat-number {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        color: #FF5B00;
+        font-weight: 700;
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    /* Buttons */
+    .action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 50px 0;
+    }
+
+    .btn {
+        padding: 18px 35px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-primary {
+        background: #FF5B00;
+        color: #fff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.8);
+        color: #FF5B00;
+        border: 2px solid rgba(255, 91, 0, 0.7);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    }
+
+    /* Floating Elements (running background) */
+    .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .heart, .star-emoji, .balloon {
+        position: absolute;
+        font-size: clamp(22px, 4vw, 38px);
+        animation: floatUp 7s linear infinite;
+        opacity: 0.85;
+    }
+
+    .heart { color: #FF5B00; }
+    .star-emoji { color: #FFD27F; }
+    .balloon { color: #FF8C42; }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+        .container { padding: 20px 15px; }
+        .action-buttons { flex-direction: column; align-items: center; }
+        .btn { width: 100%; max-width: 320px; justify-content: center; }
+    }
+
+    #particlesCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 3;
+    }
+</style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <canvas id="particlesCanvas"></canvas>
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <div class="container">
+        <h1 class="birthday-title">Happy Birthday Keerthana Sister</h1>
+
+        <div class="photo-container">
+            <div class="photo-frame">
+                <img src="friendPhoto.jpg" alt="Keerthana"
+                     onerror="this.src='https://via.placeholder.com/320x320/89cff0/FF5B00?text=Keerthana'">
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number">22</span>
+                <span class="stat-label">Amazing Years</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">More to Come</span>
+            </div>
+            <div class="stat-card">
+                <span id="todayDate" class="stat-number">Nov 29</span>
+                <span class="stat-label">Special Day</span>
+            </div>
+        </div>
+
+        <div class="wish-message">
+            <strong>Happy Birthday</strong> to the one who always says <strong>"don't worry"</strong> when I'm down—and makes it true! 🌟<br><br>
+            Live long, stay happy and blessed—may life go <strong>exactly</strong> how your heart wants. Your smile lights up our world! ✨<br><br>
+            Endless happiness to my <strong>friend-turned-sister</strong>. Here's to many more years of laughter, adventures, and unbreakable bonds! ❤️🎂
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" id="playMusic">
+                🎶 Play Birthday Song
+            </button>
+            <button class="btn btn-secondary" onclick="shareBirthday()">
+                📱 Share Celebration
+            </button>
+        </div>
+    </div>
+
+    <audio id="music" preload="auto" loop>
+        <source src="your-music.mp3" type="audio/mpeg">
+        <source src="birthday-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function updateTodayDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            document.getElementById('todayDate').textContent =
+                now.toLocaleDateString('en-US', options);
+        }
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 120; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 4 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function spawnFloatingElement() {
+            const elements = ['❤️', '💖', '💕', '⭐', '✨', '🎈', '🎉', '🎂'];
+            const element = elements[Math.floor(Math.random() * elements.length)];
+            const floater = document.createElement('div');
+            floater.className = element.includes('🎈') ? 'balloon'
+                              : element.includes('⭐') ? 'star-emoji'
+                              : 'heart';
+            floater.innerHTML = element;
+            floater.style.left = Math.random() * 100 + 'vw';
+            floater.style.animationDuration = (Math.random() * 5 + 6) + 's';
+            floater.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('floatingElements').appendChild(floater);
+            setTimeout(() => floater.remove(), 8000);
+        }
+
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particles = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 10;
+                this.size = Math.random() * 6 + 2;
+                this.speed = Math.random() * 2.5 + 0.8;
+                this.color = `hsl(${30 + Math.random() * 30}, 90%, 60%)`;
+            }
+            update() {
+                this.y -= this.speed;
+                if (this.y < 0) this.y = canvas.height + 10;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 60) particles.push(new Particle());
+            particles.forEach((p, i) => {
+                p.update();
+                p.draw();
+                if (p.y > canvas.height + 20) particles.splice(i, 1);
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        const playBtn = document.getElementById('playMusic');
+        const music = document.getElementById('music');
+        playBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().catch(() => {});
+                playBtn.innerHTML = '⏸ Pause Birthday Song';
+            } else {
+                music.pause();
+                playBtn.innerHTML = '🎶 Play Birthday Song';
+            }
+        });
+
+        function shareBirthday() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Happy Birthday Keerthana! 🎉',
+                    text: 'Join me in celebrating my amazing sister Keerthana\'s birthday! 💛',
+                    url: window.location.href
+                });
+            } else {
+                alert('🎉 Spread the birthday love! Copy this link: ' + window.location.href);
+            }
+        }
+
+        updateTodayDate();
+        createStars();
+        animateParticles();
+        setInterval(spawnFloatingElement, 900);
+        setInterval(updateTodayDate, 60000);
+
+        document.addEventListener('click', function playOnInteract() {
+            music.play().catch(() => {});
+            document.removeEventListener('click', playOnInteract);
+        }, { once: true });
+    </script>
+</body>
+</html>
